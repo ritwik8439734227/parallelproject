@@ -18,6 +18,11 @@ public class ParallelProjectController {
 	@Autowired
 	IParallelProjectService parallelprojectservice;
 
+	/**
+	 * @param user
+	 * @param password
+	 * @return
+	 */
 	@PostMapping("/admin")
 	public ModelAndView requestLogin(@RequestParam String user, @RequestParam String password) {
 		ModelAndView modelAndView;
@@ -31,7 +36,7 @@ public class ParallelProjectController {
 
 	@PostMapping("/createAccount")
 	public ModelAndView createAccount(@RequestParam String name, @RequestParam double contact,
-			@RequestParam Integer balance, @RequestParam String username,@RequestParam String password) {
+			@RequestParam Integer balance, @RequestParam String username, @RequestParam String password) {
 		BankCustomer bankcustomer = new BankCustomer();
 		bankcustomer.setName(name);
 		bankcustomer.setContact(contact);
@@ -44,8 +49,6 @@ public class ParallelProjectController {
 		modelAndView.addObject("CUSTOMERLIST", BankHoldersList);
 		return modelAndView;
 	}
-	
-	
 
 	@PostMapping("/customerlogin")
 	public ModelAndView customerLogin(@RequestParam String user, @RequestParam String password) {
@@ -57,8 +60,18 @@ public class ParallelProjectController {
 		}
 		return modelAndView;
 	}
-	
+
+	@PostMapping("/deposit")
+	public ModelAndView deposit(@RequestParam int id, @RequestParam int balance) {
+		BankCustomer bank = parallelprojectservice.findById(id);
+		int currentBalance = bank.getBalance();
+		currentBalance = currentBalance + balance;
+		bank.setBalance(currentBalance);
+		parallelprojectservice.save(bank);
+		ModelAndView modelAndView = new ModelAndView("DepositUpdated");
+		modelAndView.addObject("customer", currentBalance);
+		return modelAndView;
+
+	}
+
 }
-
-
-
