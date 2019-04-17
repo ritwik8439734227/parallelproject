@@ -7,11 +7,11 @@
 <title>customer login</title>
 </head>
 <body>
-<form action="/account/customerlogin" method="post">
-UserName
-<input type="text" name="user" required autofocus>
+<form action="/account/cust" method="post">
+<h1>UserId</h1>
+<input type="number" name="id" required autofocus>
 <br>
-Password
+<h1>Password</h1>
 <input type="password" name="password" required >
 <input type="submit" value="submit">
 </form>

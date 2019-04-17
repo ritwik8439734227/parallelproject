@@ -7,8 +7,11 @@
 <title>Create Account</title>
 </head>
 <body>
-
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
 <h1>New Account</h1>
+</div>
+</div>
 <br>
 <br>
 <form action="../account/createAccount" method="post">

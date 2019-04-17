@@ -7,6 +7,15 @@
 <title>Add Money</title>
 </head>
 <body>
-<h1>Your updated account balance is ${customer }</h1>
+<form action="../account/deposit" method="post">
+Enter account id:
+<input type="number" name="id" required autofocus>
+<br><br>
+Enter Deposit Amount:
+<input type="number" name="balance" required>
+<br><br>
+<input type="submit" value="Deposit">
+</form>
+
 </body>
 </html>
